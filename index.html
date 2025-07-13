@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html lang="ru">
 <head>
   <meta charset="UTF-8">
   <title>/b/ - Random</title>
@@ -8,6 +8,7 @@
 <body>
   <div class="board-header">/b/ - Random</div>
 
+  <!-- Форма создания треда -->
   <div class="thread-form">
     <form action="/create-thread" method="post">
       <label>Создать тред:</label><br>
@@ -18,79 +19,16 @@
 
   <hr>
 
+  <!-- Список тредов -->
   {% for thread in threads %}
   <div class="thread">
-    <div class="thread-title"><a href="/thread/{{ thread[0] }}">{{ thread[1] }}</a></div>
+    <div class="thread-title">
+      <a href="/thread/{{ thread[0] }}">{{ thread[1] }}</a>
+    </div>
   </div>
   {% else %}
   <p>Нет тредов.</p>
   {% endfor %}
-</body>
-</html>
-
-        table.news-table th, table.news-table td {
-            border: 1px solid #aaa;
-            padding: 0.5em;
-            text-align: left;
-        }
-
-        table.news-table th {
-            background-color: #af0a0f;
-            color: white;
-        }
-
-        table.news-table tr:nth-child(even) {
-            background-color: #faf4f0;
-        }
-    </style>
-</head>
-<body>
-    <header style="display:flex; align-items:center; gap:10px; padding:10px; background:#af0a0f; color:#fff;">
-        <img src="{{ url_for('static', filename='logo.png') }}" alt="Логотип" style="height:40px;">
-        <h1 style="margin:0; font-size:1.5em;">TGchan</h1>
-    </header>
-
-    <h2 style="text-align:center; margin-top: 30px;">Новости</h2>
-    {% if news %}
-        <div class="news-container">
-            <table class="news-table">
-                <thead>
-                    <tr>
-                        <th>Заголовок</th>
-                        <th>Содержание</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    {% for n in news %}
-                    <tr>
-                        <td>{{ n[2] }}</td>
-                        <td>{{ n[0] }}</td>
-                        <td>{{ n[1] }}</td>
-                    </tr>
-                    {% endfor %}
-                </tbody>
-            </table>
-        </div>
-    {% else %}
-        <p style="text-align:center;"> нету новостей.</p>
-    {% endif %}
-
-    <h1>Доска тредов</h1>
-    <form action="/create_thread" method="post">
-        <input name="title" placeholder="Название треда" required>
-        <input name="author" placeholder="Имя" required>
-        <textarea name="content" placeholder="Сообщение" required></textarea>
-        <button type="submit">Создать тред</button>
-    </form>
-    <hr>
-    {% for t in threads %}
-        <div class="thread">
-            <a href="/thread/{{ t[0] }}"><strong>{{ t[1] }}</strong></a><br>
-            <small>Создан: {{ t[2] }}</small>
-        </div>
-    {% else %}
-        <p>Нет тредов.</p>
-    {% endfor %}
 </body>
 </html>
 
