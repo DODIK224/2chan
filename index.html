@@ -41,7 +41,7 @@
 <body>
     <header style="display:flex; align-items:center; gap:10px; padding:10px; background:#af0a0f; color:#fff;">
         <img src="{{ url_for('static', filename='logo.png') }}" alt="Логотип" style="height:40px;">
-        <h1 style="margin:0; font-size:1.5em;">Мой Сайт</h1>
+        <h1 style="margin:0; font-size:1.5em;">TGchan</h1>
     </header>
 
     <h2 style="text-align:center; margin-top: 30px;">Новости</h2>
@@ -50,7 +50,6 @@
             <table class="news-table">
                 <thead>
                     <tr>
-                        <th>Дата</th>
                         <th>Заголовок</th>
                         <th>Содержание</th>
                     </tr>
@@ -67,7 +66,7 @@
             </table>
         </div>
     {% else %}
-        <p style="text-align:center;">поддержите проэкт монетой,чтобы сделать сайт лучше.</p>
+        <p style="text-align:center;"> нету новостей.</p>
     {% endif %}
 
     <h1>Доска тредов</h1>
