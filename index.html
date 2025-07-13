@@ -1,26 +1,32 @@
 <!DOCTYPE html>
-<html lang="ru">
+<html>
 <head>
-    <meta charset="UTF-8">
-    <title>Форум</title>
-    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
-    <style>
-        .news-container {
-            max-width: 800px;
-            margin: 20px auto;
-            padding: 15px;
-            border: 2px solid #af0a0f;
-            border-radius: 8px;
-            background-color: #fff;
-            box-shadow: 0 0 8px rgba(175, 10, 15, 0.3);
-        }
+  <meta charset="UTF-8">
+  <title>/b/ - Random</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+  <div class="board-header">/b/ - Random</div>
 
-        table.news-table {
-            width: 100%;
-            border-collapse: collapse;
-            margin-bottom: 0;
-            background: #f0f0f0;
-        }
+  <div class="thread-form">
+    <form action="/create-thread" method="post">
+      <label>Создать тред:</label><br>
+      <input type="text" name="title" required placeholder="Название треда">
+      <input type="submit" value="Создать">
+    </form>
+  </div>
+
+  <hr>
+
+  {% for thread in threads %}
+  <div class="thread">
+    <div class="thread-title"><a href="/thread/{{ thread[0] }}">{{ thread[1] }}</a></div>
+  </div>
+  {% else %}
+  <p>Нет тредов.</p>
+  {% endfor %}
+</body>
+</html>
 
         table.news-table th, table.news-table td {
             border: 1px solid #aaa;
