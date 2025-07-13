@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <title>Форум</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <style>
+        .news-container {
+            max-width: 800px;
+            margin: 20px auto;
+            padding: 15px;
+            border: 2px solid #af0a0f;
+            border-radius: 8px;
+            background-color: #fff;
+            box-shadow: 0 0 8px rgba(175, 10, 15, 0.3);
+        }
+
+        table.news-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-bottom: 0;
+            background: #f0f0f0;
+        }
+
+        table.news-table th, table.news-table td {
+            border: 1px solid #aaa;
+            padding: 0.5em;
+            text-align: left;
+        }
+
+        table.news-table th {
+            background-color: #af0a0f;
+            color: white;
+        }
+
+        table.news-table tr:nth-child(even) {
+            background-color: #faf4f0;
+        }
+    </style>
+</head>
+<body>
+    <header style="display:flex; align-items:center; gap:10px; padding:10px; background:#af0a0f; color:#fff;">
+        <img src="{{ url_for('static', filename='logo.png') }}" alt="Логотип" style="height:40px;">
+        <h1 style="margin:0; font-size:1.5em;">Мой Сайт</h1>
+    </header>
+
+    <h2 style="text-align:center; margin-top: 30px;">Новости</h2>
+    {% if news %}
+        <div class="news-container">
+            <table class="news-table">
+                <thead>
+                    <tr>
+                        <th>Дата</th>
+                        <th>Заголовок</th>
+                        <th>Содержание</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for n in news %}
+                    <tr>
+                        <td>{{ n[2] }}</td>
+                        <td>{{ n[0] }}</td>
+                        <td>{{ n[1] }}</td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    {% else %}
+        <p style="text-align:center;">поддержите проэкт монетой,чтобы сделать сайт лучше.</p>
+    {% endif %}
+
+    <h1>Доска тредов</h1>
+    <form action="/create_thread" method="post">
+        <input name="title" placeholder="Название треда" required>
+        <input name="author" placeholder="Имя" required>
+        <textarea name="content" placeholder="Сообщение" required></textarea>
+        <button type="submit">Создать тред</button>
+    </form>
+    <hr>
+    {% for t in threads %}
+        <div class="thread">
+            <a href="/thread/{{ t[0] }}"><strong>{{ t[1] }}</strong></a><br>
+            <small>Создан: {{ t[2] }}</small>
+        </div>
+    {% else %}
+        <p>Нет тредов.</p>
+    {% endfor %}
+</body>
+</html>

@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <title>{{ thread[1] }}</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <header style="display:flex; align-items:center; gap:10px; padding:10px; background:#af0a0f; color:#fff;">
+    <img src="{{ url_for('static', filename='logo.png') }}" alt="Логотип" style="height:40px;">
+    <h1 style="margin:0; font-size:1.5em;">Мой Сайт</h1>
+</header>
+
+    <a href="/">← Назад</a>
+    <h2>{{ thread[1] }}</h2>
+    <hr>
+    {% for m in messages %}
+        <div class="post">
+            <p><strong>{{ m[0] }}</strong> <small>{{ m[2] }}</small></p>
+            <p>{{ m[1] }}</p>
+        </div>
+    {% endfor %}
+    <form action="/reply/{{ thread[0] }}" method="post">
+        <input name="author" placeholder="Имя" required>
+        <textarea name="content" placeholder="Сообщение" required></textarea>
+        <button type="submit">Ответить</button>
+    </form>
+</body>
+</html>
+

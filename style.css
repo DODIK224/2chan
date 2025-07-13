@@ -1,0 +1,109 @@
+body {
+    background-color: #f0e0d6; /* Бежевый фон, как у борд 4chan */
+    color: #000000;
+    font-family: "Courier New", monospace;
+    font-size: 14px;
+    max-width: 960px;
+    margin: auto;
+    padding: 1em;
+}
+
+h1, h2, h3 {
+    color: #af0a0f; /* Красный, как заголовок раздела */
+    margin-top: 1em;
+}
+
+a {
+    color: #0000ee; /* Синие ссылки */
+    text-decoration: none;
+}
+
+a:hover {
+    text-decoration: underline;
+}
+
+form {
+    margin: 1em 0;
+}
+
+input, textarea {
+    font-family: "Courier New", monospace;
+    font-size: 1em;
+    padding: 0.5em;
+    width: 100%;
+    background-color: #ffffff;
+    border: 1px solid #888;
+    margin-bottom: 0.5em;
+}
+
+button {
+    background-color: #ccc;
+    border: 1px solid #999;
+    padding: 0.5em 1em;
+    font-family: "Courier New", monospace;
+    cursor: pointer;
+}
+
+button:hover {
+    background-color: #bbb;
+}
+
+.thread, .post {
+    background-color: #f0f0f0;
+    border: 1px solid #999;
+    padding: 0.75em;
+    margin-bottom: 1em;
+    white-space: pre-wrap;
+}
+
+.post small {
+    color: #789922; /* как время в постах */
+}
+
+hr {
+    border: none;
+    border-top: 1px solid #999;
+    margin: 2em 0;
+}
+
+header {
+    background: #af0a0f;
+    color: white;
+    padding: 10px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+header img {
+    height: 40px;
+}
+
+header h1 {
+    margin: 0;
+    font-size: 1.5em;
+}
+
+.news-container {
+    max-width: 800px;
+    margin: 20px auto;
+    padding: 10px;
+    border: 1px solid #aaa;
+    background: #fff;
+}
+
+.news-table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.news-table th, .news-table td {
+    border: 1px solid #888;
+    padding: 4px;
+    font-size: 13px;
+    text-align: left;
+}
+
+.news-table th {
+    background-color: #eee;
+}
