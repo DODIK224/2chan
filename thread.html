@@ -2,11 +2,11 @@
 <html lang="ru">
 <head>
   <meta charset="UTF-8">
-  <title>{{ title }} — /r/clone</title>
+  <title>{{ title }} — /r/beautyboard</title>
   <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
 </head>
 <body>
-  <div class="header"><a href="/">← /r/clone</a> — {{ title }}</div>
+  <div class="header"><a href="/">← /r/beautyboard</a> — {{ title }}</div>
   <div class="container">
 
     <div class="form-block">
@@ -21,11 +21,11 @@
       {% endwith %}
 
       <form method="post">
-        <label for="content">Написать комментарий:</label>
-        <textarea name="content" rows="4" required></textarea>
+        <label for="content">Комментарий</label>
+        <textarea name="content" id="content" rows="4" required placeholder="Напиши что-нибудь..."></textarea>
 
         <label for="captcha">Сколько будет 3 + 2?</label>
-        <input type="text" name="captcha" required placeholder="Ответ">
+        <input type="text" name="captcha" required placeholder="Введите ответ">
 
         <input type="submit" value="Отправить">
       </form>
@@ -33,7 +33,7 @@
 
     {% for post in posts %}
       <div class="post-card">
-        <div><strong>Аноним:</strong></div>
+        <strong>Аноним:</strong>
         <div>{{ post[2] }}</div>
       </div>
     {% else %}
