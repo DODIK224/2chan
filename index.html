@@ -2,11 +2,11 @@
 <html lang="ru">
 <head>
   <meta charset="UTF-8">
-  <title>/r/clone</title>
+  <title>/r/beautyboard</title>
   <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
 </head>
 <body>
-  <div class="header">/r/clone — Reddit-стиль доски</div>
+  <div class="header">/r/beautyboard — Ультра стильный форум</div>
   <div class="container">
 
     <div class="form-block">
@@ -21,11 +21,11 @@
       {% endwith %}
 
       <form action="/create-thread" method="post">
-        <label for="title">Создать новый тред:</label>
-        <input type="text" name="title" id="title" required placeholder="Название треда">
+        <label for="title">Название треда</label>
+        <input type="text" name="title" id="title" required placeholder="Введите заголовок">
 
         <label for="captcha">Сколько будет 3 + 2?</label>
-        <input type="text" name="captcha" required placeholder="Ответ">
+        <input type="text" name="captcha" id="captcha" required placeholder="Введите ответ">
 
         <input type="submit" value="Создать тред">
       </form>
@@ -33,12 +33,13 @@
 
     {% for thread in threads %}
       <div class="thread-card">
-        <div class="thread-title"><a href="/thread/{{ thread[0] }}">{{ thread[1] }}</a></div>
+        <div class="thread-title">
+          <a href="/thread/{{ thread[0] }}">{{ thread[1] }}</a>
+        </div>
       </div>
     {% else %}
       <p>Нет тредов.</p>
     {% endfor %}
-
   </div>
 </body>
 </html>
