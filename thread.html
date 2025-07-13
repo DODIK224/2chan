@@ -1,32 +1,45 @@
 <!DOCTYPE html>
-<html>
+<html lang="ru">
 <head>
   <meta charset="UTF-8">
-  <title>{{ title }}</title>
+  <title>{{ title }} — /r/clone</title>
   <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
 </head>
 <body>
-  <div class="board-header">/b/ - {{ title }}</div>
+  <div class="header"><a href="/">← /r/clone</a> — {{ title }}</div>
+  <div class="container">
 
-  <div class="thread-form">
-    <form method="post">
-      <label>Ответить:</label><br>
-      <textarea name="content" required rows="4" cols="50"></textarea><br>
-      <input type="submit" value="Отправить">
-    </form>
+    <div class="form-block">
+      {% with messages = get_flashed_messages() %}
+        {% if messages %}
+          <div class="flash-msg">
+            {% for message in messages %}
+              <p>{{ message }}</p>
+            {% endfor %}
+          </div>
+        {% endif %}
+      {% endwith %}
+
+      <form method="post">
+        <label for="content">Написать комментарий:</label>
+        <textarea name="content" rows="4" required></textarea>
+
+        <label for="captcha">Сколько будет 3 + 2?</label>
+        <input type="text" name="captcha" required placeholder="Ответ">
+
+        <input type="submit" value="Отправить">
+      </form>
+    </div>
+
+    {% for post in posts %}
+      <div class="post-card">
+        <div><strong>Аноним:</strong></div>
+        <div>{{ post[2] }}</div>
+      </div>
+    {% else %}
+      <p>Нет комментариев.</p>
+    {% endfor %}
+
   </div>
-
-  <hr>
-
-  {% for post in posts %}
-  <div class="post">
-    <b>Аноним:</b> {{ post[2] }}
-  </div>
-  {% else %}
-  <p>Нет постов.</p>
-  {% endfor %}
-
-  <p><a href="/">← Назад</a></p>
 </body>
 </html>
-
