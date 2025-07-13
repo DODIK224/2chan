@@ -1,84 +1,108 @@
-body {
-  background-color: #f6f7f8;
-  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+/* Reset и базовые стили */
+* {
   margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Segoe UI', 'Roboto', sans-serif;
+  background-color: #f8f9fa;
+  color: #212529;
+  line-height: 1.6;
   padding: 20px;
-  color: #1a1a1b;
 }
 
 a {
-  text-decoration: none;
   color: #0079d3;
+  text-decoration: none;
 }
 
 a:hover {
   text-decoration: underline;
 }
 
+/* Шапка */
 .header {
-  background-color: white;
-  border-bottom: 1px solid #ccc;
-  padding: 15px 20px;
-  font-size: 24px;
+  background: white;
+  padding: 20px;
+  font-size: 28px;
   font-weight: bold;
-  color: #ff4500; /* Reddit-оранжевый */
+  color: #ff4500;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  margin-bottom: 30px;
+  text-align: center;
 }
 
+/* Контейнер */
 .container {
   max-width: 800px;
   margin: 0 auto;
 }
 
-.thread-card, .post-card {
-  background-color: white;
-  border: 1px solid #ccc;
-  border-radius: 6px;
-  padding: 15px;
-  margin-bottom: 20px;
-  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
-}
-
-.thread-title {
-  font-weight: bold;
-  font-size: 18px;
-  margin-bottom: 8px;
-}
-
+/* Формы */
 .form-block {
-  background-color: white;
-  border: 1px solid #ccc;
-  border-radius: 6px;
+  background-color: #ffffff;
   padding: 20px;
+  border-radius: 10px;
   margin-bottom: 30px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.08);
 }
 
-input[type="text"], textarea {
+label {
+  font-weight: bold;
+  margin-bottom: 5px;
+  display: block;
+}
+
+input[type="text"],
+textarea {
   width: 100%;
-  padding: 10px;
-  margin: 8px 0 16px 0;
+  padding: 12px;
+  margin-top: 6px;
+  margin-bottom: 20px;
   border: 1px solid #ccc;
-  border-radius: 4px;
-  font-size: 14px;
-  box-sizing: border-box;
+  border-radius: 6px;
+  font-size: 15px;
 }
 
 input[type="submit"] {
   background-color: #ff4500;
   color: white;
   border: none;
-  padding: 10px 20px;
-  border-radius: 4px;
-  font-weight: bold;
+  padding: 12px 24px;
+  font-size: 15px;
+  border-radius: 6px;
   cursor: pointer;
+  transition: background-color 0.2s;
 }
 
 input[type="submit"]:hover {
-  background-color: #e03d00;
+  background-color: #e03a00;
+}
+
+/* Карточки тредов / постов */
+.thread-card, .post-card {
+  background-color: white;
+  border-radius: 10px;
+  padding: 20px;
+  margin-bottom: 20px;
+  box-shadow: 0 3px 6px rgba(0, 0, 0, 0.06);
+  transition: transform 0.2s;
+}
+
+.thread-card:hover,
+.post-card:hover {
+  transform: scale(1.01);
+}
+
+.thread-title {
+  font-size: 18px;
+  font-weight: bold;
+  margin-bottom: 5px;
 }
 
 .flash-msg {
   color: red;
-  font-size: 14px;
-  margin-bottom: 10px;
+  margin-bottom: 15px;
 }
-
