@@ -2,33 +2,43 @@
 <html lang="ru">
 <head>
   <meta charset="UTF-8">
-  <title>/b/ - Random</title>
+  <title>/r/clone</title>
   <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
 </head>
 <body>
-  <div class="board-header">/b/ - Random</div>
+  <div class="header">/r/clone — Reddit-стиль доски</div>
+  <div class="container">
 
-  <!-- Форма создания треда -->
-  <div class="thread-form">
-    <form action="/create-thread" method="post">
-      <label>Создать тред:</label><br>
-      <input type="text" name="title" required placeholder="Название треда">
-      <input type="submit" value="Создать">
-    </form>
-  </div>
+    <div class="form-block">
+      {% with messages = get_flashed_messages() %}
+        {% if messages %}
+          <div class="flash-msg">
+            {% for message in messages %}
+              <p>{{ message }}</p>
+            {% endfor %}
+          </div>
+        {% endif %}
+      {% endwith %}
 
-  <hr>
+      <form action="/create-thread" method="post">
+        <label for="title">Создать новый тред:</label>
+        <input type="text" name="title" id="title" required placeholder="Название треда">
 
-  <!-- Список тредов -->
-  {% for thread in threads %}
-  <div class="thread">
-    <div class="thread-title">
-      <a href="/thread/{{ thread[0] }}">{{ thread[1] }}</a>
+        <label for="captcha">Сколько будет 3 + 2?</label>
+        <input type="text" name="captcha" required placeholder="Ответ">
+
+        <input type="submit" value="Создать тред">
+      </form>
     </div>
+
+    {% for thread in threads %}
+      <div class="thread-card">
+        <div class="thread-title"><a href="/thread/{{ thread[0] }}">{{ thread[1] }}</a></div>
+      </div>
+    {% else %}
+      <p>Нет тредов.</p>
+    {% endfor %}
+
   </div>
-  {% else %}
-  <p>Нет тредов.</p>
-  {% endfor %}
 </body>
 </html>
-
