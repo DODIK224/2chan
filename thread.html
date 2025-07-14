@@ -2,11 +2,11 @@
 <html lang="ru">
 <head>
   <meta charset="UTF-8">
-  <title>{{ title }} — /r/beautyboard</title>
+  <title>{{ title }} — home</title>
   <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
 </head>
 <body>
-  <div class="header"><a href="/">← /r/beautyboard</a> — {{ title }}</div>
+  <div class="header"><a href="/">← back to home</a> — {{ title }}</div>
   <div class="container">
 
     <div class="form-block">
@@ -24,8 +24,7 @@
         <label for="content">Комментарий</label>
         <textarea name="content" id="content" rows="4" required placeholder="Напиши что-нибудь..."></textarea>
 
-        <label for="captcha">Сколько будет 3 + 2?</label>
-        <input type="text" name="captcha" required placeholder="Введите ответ">
+        <label for="text">поддержать проэкт @userhumorist</label>
 
         <input type="submit" value="Отправить">
       </form>
@@ -39,6 +38,26 @@
     {% else %}
       <p>Нет комментариев.</p>
     {% endfor %}
+
+    <h3>Комментарии</h3>
+
+    {{ comments_html|safe }}
+
+    <div id="reply-form" style="display:none; margin-top: 20px;">
+      <form method="post" action="/comment">
+        <input type="hidden" name="thread_id" value="{{ thread_id }}">
+        <input type="hidden" name="parent_id" id="reply-to">
+        <textarea name="content" required></textarea>
+        <button type="submit">Ответить</button>
+      </form>
+    </div>
+
+    <script>
+    function reply(commentId) {
+      document.getElementById('reply-form').style.display = 'block';
+      document.getElementById('reply-to').value = commentId;
+    }
+    </script>
 
   </div>
 </body>
